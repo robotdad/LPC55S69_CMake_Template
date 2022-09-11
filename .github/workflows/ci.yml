@@ -23,10 +23,13 @@ jobs:
     - name: Copy container build output
       run:
         docker cp lpc55s69-build-container:/src/build lpc55s69
-    - name: Publish lpc55s69 build output
+    - name: Publish lpc55s69 debug firmware
       uses: actions/upload-artifact@v2
       with:
         name: lpc55s69 debug firmware
         path: ${{ github.workspace }}/lpc55s69/m33-debug/LPC55S69_cmake_template.elf
+    - name: Publish lpc55s69 release firmware
+      uses: actions/upload-artifact@v2
+      with:
         name: lpc55s69 release firmware
         path: ${{ github.workspace }}/lpc55s69/m33-release/LPC55S69_cmake_template.elf
