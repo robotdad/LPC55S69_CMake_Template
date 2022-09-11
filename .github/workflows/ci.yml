@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Spin up a container to build the firmware on changes
       run: |
-        docker build --target build -t lpc55s69-build-image -f .\.devcontainer\Dockerfile .
+        docker build --target build -t lpc55s69-build-image -f .devcontainer/Dockerfile .
         docker run --name lpc55s69-build-container lpc55s69-build-image
     - name: Copy container build output
       run:
