@@ -1,0 +1,33 @@
+{
+  "version": "0.2.1",
+  "configurations": [
+    {
+      "project": "CMakeLists.txt",
+      "projectTarget": "LPC55S69_cmake_template.elf",
+      "name": "LPC55S69_cmake_template.elf",
+      "type": "cppdbg",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${debugInfo.fullTargetPath}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "arm-none-eabi-gdb",
+      "miDebuggerServerAddress": "localhost:3333",
+      "debugServerPath": "JLinkGDBServerCL",
+      "debugServerArgs": "-if swd -speed 4000 -endian little -port 3333 -device LPC55S69_M33_0",
+      "serverStarted": "Connected to target",
+      "filterStdout": true,
+      "stopAtConnect": true,
+      "postRemoteConnectCommands": [
+        {
+          "text": "-interpreter-exec console \"monitor reset\"",
+          "ignoreFailures": false
+        },
+        {
+          "text": "-interpreter-exec console \"load\"",
+          "ignoreFailures": false
+        }
+      ],
+      "svdPath": "${workspaceRoot}/LPC55S69_cm33_core0.svd"
+    }
+  ]
+}
