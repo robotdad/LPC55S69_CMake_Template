@@ -53,19 +53,19 @@ docker build --target build -t app-build-image -f .\.devcontainer\Dockerfile .
 ```
 
 ### Containers
-Name the container for easy reuse
+Name the container for easy use in subsequent actions, like extracting the build artifacts.
 ```
-docker run -it --name arm-container arm-dev-image
+docker run --name app-build-container app-build-image
 ```
-Don't name the container to easily discard it later with ```docker container prune``` (deletes all containers not running).
+Get you binary out of your build container
+```
+docker cp app-build-container:/src/build/m33-debug/LPC55S69_cmake_template.elf .
+```
+Don't name the container to easily spin it up multiple times, easily discard them all later with ```docker container prune``` (deletes all containers not running).
 ```
 docker run -it arm-dev-image
 ```
 If you want to interactively see what is happening in your build image
 ```
 docker container run -it app-build-image
-```
-Get you binary out of your build container
-```
-docker cp app-build-container:/src/build/LPC55S69_cmake_template.elf .
 ```

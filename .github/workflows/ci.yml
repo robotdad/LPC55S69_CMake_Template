@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ContinuousIntegration
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events, but including workflow_dispatch also allows manual execution
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build firmware
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Spin up a container to build the firmware on changes
+      run: |
+        docker build --target build -t lpc55s69-build-image -f .\.devcontainer\Dockerfile .
+        docker run --name lpc55s69-build-container lpc55s69-build-image
+    - name: Copy container build output
+      run:
+        docker cp lpc55s69-build-container:/src/build lpc55s69
+    - name: Publish lpc55s69 build output
+      uses: actions/upload-artifact@v2
+      with:
+        name: lpc55s69 debug firmware
+        path: ${{ github.workspace }}/lpc55s69/m33-debug/LPC55S69_cmake_template.elf
+        name: lpc55s69 release firmware
+        path: ${{ github.workspace }}/lpc55s69/m33-release/LPC55S69_cmake_template.elf
