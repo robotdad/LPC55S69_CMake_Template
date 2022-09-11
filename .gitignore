@@ -1,0 +1,4 @@
+/.vs
+/build
+
+!/.vs/launch.vs.json

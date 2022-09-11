@@ -1,0 +1,19 @@
+{
+  "default-registry": {
+    "kind": "git",
+    "baseline": "032d9d0820db290ce9ff644dabfdf564343013ae",
+    "repository": "https://github.com/microsoft/vcpkg"
+  },
+  "registries": [
+    {
+      "kind": "artifact",
+      "location": "https://aka.ms/vcpkg-ce-default",
+      "name": "microsoft"
+    }
+  ],
+  "requires": {
+    "microsoft:tools/kitware/cmake": "* 3.20.1",
+    "microsoft:tools/ninja-build/ninja": "* 1.10.2",
+    "microsoft:compilers/arm/gcc": "* 2020.10.0"
+  }
+}

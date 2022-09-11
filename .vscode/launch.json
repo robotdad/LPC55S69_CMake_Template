@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/build/m33-debug/LPC55S69_cmake_template.elf",
+            "MIMode": "gdb",
+            "miDebuggerPath": "arm-none-eabi-gdb",
+            "miDebuggerServerAddress": "localhost:3333",
+            "windows": {
+                "debugServerPath": "JLinkGDBServerCL",
+            },
+            "linux": {
+                "debugServerPath": "JLinkGDBServerCLExe",
+            },
+            "debugServerArgs": "-if swd -speed 4000 -endian little -port 3333 -device LPC55S69_M33_0 -x ${workspaceFolder}/.vscode/reset.gdb",
+            "serverStarted": "Connected to target",
+            "filterStdout": true,
+            "stopAtConnect": true,
+            "preLaunchTask": "Flash",
+            "svdPath": "${workspaceFolder}/LPC55S69_cm33_core0.svd"
+        }
+    ]
+}

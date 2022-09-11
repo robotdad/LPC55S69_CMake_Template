@@ -1,0 +1,3 @@
+loadfile build\m33-debug\LPC55S69_cmake_template.elf
+r0
+q
