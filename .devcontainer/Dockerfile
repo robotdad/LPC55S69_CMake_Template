@@ -18,6 +18,7 @@ RUN /bin/bash -c ". ~/.vcpkg/vcpkg-init && vcpkg activate"
 FROM dev as build
 COPY ./ /src
 RUN /bin/bash -c ". ~/.vcpkg/vcpkg-init && vcpkg activate && cmake --preset m33-debug && cmake --build --preset m33-debug"
+RUN /bin/bash -c ". ~/.vcpkg/vcpkg-init && vcpkg activate && cmake --preset m33-release && cmake --build --preset m33-release"
 
 
 
