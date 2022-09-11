@@ -65,17 +65,17 @@ jobs:
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
     # Build using vcpkg and CMake
-     - name: Acquire prereqs and build
-       run: |
-       echo "Get vcpkg and activate"
-       . <(curl https://aka.ms/vcpkg-init.sh -L)
-       vcpkg activate
-       echo "CMake configure presets"
-       cmake --preset m33-debug
-       cmake --preset m33-release
-       echo "CMake build"
-       cmake --build --preset m33-debug
-       cmake --build --preset m33-release
+    - name: Acquire prereqs and build
+      run: |
+        echo "Get vcpkg and activate"
+        . <(curl https://aka.ms/vcpkg-init.sh -L)
+        vcpkg activate
+        echo "CMake configure presets"
+        cmake --preset m33-debug
+        cmake --preset m33-release
+        echo "CMake build"
+        cmake --build --preset m33-debug
+        cmake --build --preset m33-release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
