@@ -5,10 +5,10 @@
             "name": "m33-base",
             "hidden": true,
             "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build",
+            "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
                 "CMAKE_TOOLCHAIN_FILE": {
                     "type": "FILEPATH",
                     "value": "arm-none-eabi-gcc.cmake"
